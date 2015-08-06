@@ -4,51 +4,56 @@
 
 {% block body %}
 
-  <div id="logo"></div>
+    <div id="logo"></div>
 
-    <div id="content">
-        {% block content %}
-            <section id="todoapp">
-                <header id="header">
-                    <h1>todos</h1>
-                        <form  id="new-todo" action="" method="post">
+        <div id="content">
+            {% block content %}
+                <section id="todoapp">
+                    <header id="header">
+                        <h1>todos</h1>
+                            <form  id="new-todo" action="{{ path('todo_create') }}" method="post" {{ form_enctype(form) }}>
+                                {{ form_errors(form) }}
+                                {{ form_row(form) }}
 
-                        </form>
-                </header>            
-            </section>
-            <section id="main">
-                <form id="formtoggle" action="">
-                    <input id="toggle-all" type="checkbox">
-                </form>
-                <label for="toggle-all">Mark all as complete</label>
-                <ul id="todo-list">
-                    <li>
-                        <div class="view">
-                            <a class="btnedit" href="#">
-                                <input class="toggle" type="checkbox" >
-                            </a>
-                            <div class="todolist-label">
-                                <label>Todo</label>
-                                <form action="" method="post">
-                                    <button class="destroy"></button>
-                                </form>
+                                <div style="display:none;">
+                                    {{ form_rest(form) }}
+                                </div>
+                            </form>
+                    </header>            
+                </section>
+                <section id="main">
+                    <form id="formtoggle" action="">
+                        <input id="toggle-all" type="checkbox">
+                    </form>
+                    <label for="toggle-all">Mark all as complete</label>
+                    <ul id="todo-list">
+                        <li>
+                            <div class="view">
+                                <a class="btnedit" href="#">
+                                    <input class="toggle" type="checkbox" >
+                                </a>
+                                <div class="todolist-label">
+                                    <label>Todo</label>
+                                    <form action="" method="post">
+                                        <button class="destroy"></button>
+                                    </form>
+                                </div>
                             </div>
-                        </div>
-                      <input class="edit" value="">
-                    </li>
-                </ul>
-            </section>
-            <footer id="form-footer">
-                <span id="count-todos"> item left</span>
-                <a id="clear-completed" href="">Clear completed</a>
-            </footer>
-        {% endblock %}
-    </div>
+                          <input class="edit" value="">
+                        </li>
+                    </ul>
+                </section>
+                <footer id="form-footer">
+                    <span id="count-todos"> item left</span>
+                    <a id="clear-completed" href="">Clear completed</a>
+                </footer>
+            {% endblock %}
+        </div>
 
-    <footer id="footer">
-        <p>Double-click to edit a todo</p>
-        <p>Written by <a href="https://github.com/dvdoliveira">Deivide Oliveira</a></p>
-    </footer>
-  </div> 
+        <footer id="footer">
+            <p>Double-click to edit a todo</p>
+            <p>Written by <a href="https://github.com/dvdoliveira">Deivide Oliveira</a></p>
+        </footer>
+    </div> 
 
 {% endblock %}

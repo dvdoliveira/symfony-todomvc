@@ -12,9 +12,6 @@ use AppBundle\Form\TodoType;
 
 class DefaultController extends Controller
 {
-    /**
-     * @Route("/", name="homepage")
-     */
     public function indexAction(Request $request)
     {
         $em = $this->getDoctrine()->getManager();
@@ -25,5 +22,23 @@ class DefaultController extends Controller
           'entities' => $entities,
           'form'   => $form->createView(),
           ));
+    }
+
+    public function createAction(Request $request)
+    {
+        $entity  = new Todo();
+        $form = $this->createForm(new TodoType(), $entity);
+        $form->bind($request);
+        if ($form->isValid()) {
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($entity);
+            $em->flush();
+
+            return $this->redirect($this->generateUrl('todo'));
+        }
+        return $this->render('AppBundle:Todo:new.html.twig', array(
+            'entity' => $entity,
+            'form'   => $form->createView(),
+      ));
     }
 }

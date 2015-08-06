@@ -60,6 +60,15 @@ button {
   text-rendering: optimizeLegibility;
 }
 
+#todoapp input::-webkit-input-placeholder {
+  font-style: italic;
+}
+
+#todoapp input:-moz-placeholder {
+  font-style: italic;
+  color: #a9a9a9;
+}
+
 #header {
   padding-top: 15px;
   border-radius: inherit;
@@ -81,6 +90,14 @@ button {
 }
 
 #new-todo {
+  border: none;
+  background: rgba(0, 0, 0, 0.02);
+  z-index: 2;
+  box-shadow: none;
+}
+
+#appbundle_todotype {
+  padding: 16px 16px 16px 60px;
   border: none;
   background: rgba(0, 0, 0, 0.02);
   z-index: 2;

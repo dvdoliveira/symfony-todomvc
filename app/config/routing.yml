@@ -1,3 +1,13 @@
 app:
     resource: "@AppBundle/Controller/"
-    type:     annotation
+    prefix:   /
+    # type:     annotation
+
+todo:
+    path:  /
+    defaults: { _controller: "AppBundle:Default:index" }
+
+todo_create:
+    path:  /create
+    defaults: { _controller: "AppBundle:Default:create" }
+    methods: { _method: post }
