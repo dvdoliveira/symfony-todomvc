@@ -2,12 +2,17 @@
 <html>
     <head>
         <meta charset="UTF-8" />
-        <title>{% block title %}Welcome!{% endblock %}</title>
+        <title>{% block title %}Symfony - TodoMVC{% endblock %}</title>
+        <meta name="description" content="Symfony TodoMVC">
+        <meta name="viewport" content="width=device-width">
+
         {% block stylesheets %}{% endblock %}
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
     </head>
     <body>
-        {% block body %}{% endblock %}
-        {% block javascripts %}{% endblock %}
+        <div id="container">
+            {% block body %}{% endblock %}
+            {% block javascripts %}{% endblock %}
+        </div>    
     </body>
 </html>
