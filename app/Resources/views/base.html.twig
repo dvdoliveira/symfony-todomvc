@@ -5,24 +5,20 @@
         <title>{% block title %}Symfony - TodoMVC{% endblock %}</title>
         <meta name="description" content="Symfony TodoMVC">
         <meta name="viewport" content="width=device-width">
-        {% stylesheets filter="scssphp" output="css/app.css"
-            "assets/css/*.css"
-            %}
-        <link rel="stylesheet" href="{{ asset_url }}" />
-        {% endstylesheets %}
+        {% block stylesheets %}
+        <link rel="stylesheet" href="{{ asset('assets/css/main.css') }}" />
+        <link rel="stylesheet" href="{{ asset('assets/css/normalize.min.css') }}" />
+        {% endblock %}
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
     </head>
     <body>
         <div id="container">
             {% block body %}{% endblock %}
             {% block javascripts %}
-                {% javascripts  'assets/js/jquery-1.11.3.min.js'
-                                'assets/js/main.js'
-                                %}
-                    <script src="{{ asset_url }}" type="text/javascript"></script>
-                    <script src="{{ asset('bundles/fosjsrouting/js/router.js') }}"></script>
-                    <script src="{{ path('fos_js_routing_js', {'callback': 'fos.Router.setData'}) }}"></script>
-                {% endjavascripts %}
+                <script src="{{ asset('assets/js/jquery-1.11.3.min.js') }}" type="text/javascript"></script>
+                <script src="{{ asset('assets/js/main.js') }}" type="text/javascript"></script>
+                <script src="{{ asset('bundles/fosjsrouting/js/router.js') }}"></script>
+                <script src="{{ path('fos_js_routing_js', {'callback': 'fos.Router.setData'}) }}"></script>
             {% endblock %}
         </div>    
     </body>

@@ -16,7 +16,7 @@ todo_create:
     methods:  { _method: post }
 
 todo_update:
-    pattern:  /{id}/update
+    path:     /{id}/update
     defaults: { _controller: "AppBundle:Default:update" }
     methods:  { _method: post|put }
     options:
@@ -27,11 +27,11 @@ todo_toggle:
     defaults: { _controller: "AppBundle:Default:toggle" }
 
 todo_delete:
-    pattern:  /{id}/delete/{token}
+    path:     /{id}/delete/{token}
     defaults: { _controller: "AppBundle:Default:delete" }
-    methods: { _method: post|delete }
+    methods:  { _method: post|delete }
 
 todo_clearcompleted:
-    pattern:  /clearcompleted
+    path:     /clearcompleted
     defaults: { _controller: "AppBundle:Default:clearcompleted" }
-    methods: { _method: get }
+    methods:  { _method: get }
