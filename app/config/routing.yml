@@ -12,6 +12,13 @@ todo_create:
     defaults: { _controller: "AppBundle:Default:create" }
     methods:  { _method: post }
 
+todo_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "AppBundle:Default:update" }
+    methods:  { _method: post|put }
+    options:
+        expose: true
+
 todo_toggle:
     path:     /toggle
     defaults: { _controller: "AppBundle:Default:toggle" }

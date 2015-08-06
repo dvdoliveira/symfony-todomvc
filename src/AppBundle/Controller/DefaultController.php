@@ -42,16 +42,43 @@ class DefaultController extends Controller
       ));
     }
 
-    public function toggleAction() {
-    $em = $this->getDoctrine()->getManager();
-    $unfinished = $em->getRepository('AppBundle:Todo')->findBy(array('completed' => 0));
-    if ($unfinished) {
-      foreach ($unfinished as $i) {
-        $i->setCompleted(1);
-        $em->persist($i);
-      }
-      $em->flush();
+    public function toggleAction() 
+    {
+        $em = $this->getDoctrine()->getManager();
+        $unfinished = $em->getRepository('AppBundle:Todo')->findBy(array('completed' => 0));
+        if ($unfinished) {
+            foreach ($unfinished as $i) {
+                $i->setCompleted(1);
+                $em->persist($i);
+            }
+            $em->flush();
+        }
+        return $this->redirect($this->generateUrl('todo'));
     }
-    return $this->redirect($this->generateUrl('todo'));
-  }
+
+    public function updateAction(Request $request, $id)
+    {
+        if ($request->isXmlHttpRequest()) {
+            $em = $this->getDoctrine()->getManager();
+
+            $entity = $em->getRepository('AppBundle:Todo')->find($id);
+
+            if (!$entity) {
+                throw $this->createNotFoundException('Todo was not found.');
+            } else {
+                $finished = $entity->getCompleted();
+                if ( $finished == 0) {
+                    $entity->setCompleted(1);
+                } else {
+                    $entity->setCompleted(0);
+                }
+            $em->persist($entity);
+            $em->flush();
+
+            $response = new Response(json_encode(array('completed' => $entity->getCompleted())));
+            $response->headers->set('Content-Type', 'application/json');
+            return $response;
+            }
+        }
+    }
 }
