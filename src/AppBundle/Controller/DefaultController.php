@@ -13,9 +13,16 @@ class DefaultController extends Controller
      */
     public function indexAction(Request $request)
     {
-        // replace this example code with whatever you need
+        $em = $this->getDoctrine()->getManager();
+        $entities = $em->getRepository('AppBundle:Todo')->findAll();
+        $entity = new Todo();
+        $form   = $this->createForm(new TodoType(), $entity);
         return $this->render('default/index.html.twig', array(
-            'base_dir' => realpath($this->container->getParameter('kernel.root_dir').'/..'),
-        ));
+          'entities' => $entities,
+          'form'   => $form->createView(),
+          ));
+        // return $this->render('default/index.html.twig', array(
+        //     'base_dir' => realpath($this->container->getParameter('kernel.root_dir').'/..'),
+        // ));
     }
 }
