@@ -3,6 +3,9 @@ app:
     prefix:   /
     # type:     annotation
 
+fos_js_routing:
+    resource: "@FOSJsRoutingBundle/Resources/config/routing/routing.xml"
+
 todo:
     path:     /
     defaults: { _controller: "AppBundle:Default:index" }

@@ -1,8 +1,22 @@
 (function() {
 
   $(document).ready(function() {
+    var allRemovableItems;
     var refreshElementRemaining;
     var refreshElementToDelete;
+    $("input:text:visible:first").focus();
+    allRemovableItems = 0;
+    refreshElementRemaining = function() {
+      var allCompletedItems;
+      allCompletedItems = $("li:not(.completed) ").length;
+      return $('#elementsRemaining').html(allCompletedItems);
+    };
+    refreshElementToDelete = function() {
+      this.allRemovableItems = $(".completed").length;
+      return $('#clear-completed ').html("Clear completed (" + this.allRemovableItems + ")");
+    };
+    refreshElementRemaining();
+    refreshElementToDelete();
     
     $('.btnedit').click(function() {
       var todo;

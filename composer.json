@@ -22,7 +22,8 @@
         "incenteev/composer-parameter-handler": "~2.0",
         "twbs/bootstrap": "^3.3",
         "leafo/scssphp": "^0.1.9",
-        "patchwork/jsqueeze": "~1.0"
+        "patchwork/jsqueeze": "~1.0",
+        "friendsofsymfony/jsrouting-bundle": "^1.5"
     },
     "require-dev": {
         "sensio/generator-bundle": "~2.3"
