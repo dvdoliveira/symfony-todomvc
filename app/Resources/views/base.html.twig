@@ -5,14 +5,23 @@
         <title>{% block title %}Symfony - TodoMVC{% endblock %}</title>
         <meta name="description" content="Symfony TodoMVC">
         <meta name="viewport" content="width=device-width">
-
-        {% block stylesheets %}{% endblock %}
+        {% stylesheets filter="scssphp" output="css/app.css"
+            "assets/css/*.css"
+            %}
+        <link rel="stylesheet" href="{{ asset_url }}" />
+        {% endstylesheets %}
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
     </head>
     <body>
         <div id="container">
             {% block body %}{% endblock %}
-            {% block javascripts %}{% endblock %}
+            {% block javascripts %}
+                {% javascripts  'assets/js/jquery-1.11.3.min.js'
+                                'assets/js/bootstrap.min.js'
+                                %}
+                    <script src="{{ asset_url }}" type="text/javascript"></script>
+                {% endjavascripts %}
+            {% endblock %}
         </div>    
     </body>
 </html>
