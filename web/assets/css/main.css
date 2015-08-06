@@ -26,6 +26,17 @@ button {
   appearance: none;
 }
 
+#content { 
+    width: 550px;
+    position: absolute;
+    top:0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+}
+
+
 #todoapp {
   background: #fff;
   background: rgba(255, 255, 255, 0.9);
@@ -89,11 +100,54 @@ button {
   border-top-right-radius: 1px;
 }
 
+#new-todo,
+.edit {
+  position: relative;
+  margin: 0;
+  width: 100%;
+  font-size: 24px;
+  font-family: inherit;
+  line-height: 1.4em;
+  border: 0;
+  outline: none;
+  color: inherit;
+  border: 1px solid #999;
+  box-shadow: inset 0 -1px 5px 0 rgba(0, 0, 0, 0.2);
+  box-sizing: border-box;
+  font-smoothing: antialiased;
+}
+
 #new-todo {
   border: none;
   background: rgba(0, 0, 0, 0.02);
   z-index: 2;
   box-shadow: none;
+}
+
+#new-todo label {
+  display: none;
+}
+
+#appbundle_todotype,
+.edit {
+  position: relative;
+  margin: 0;
+  width: 100%;
+  font-size: 24px;
+  font-family: inherit;
+  line-height: 1.4em;
+  border: 0;
+  outline: none;
+  color: inherit;
+  padding: 6px;
+  border: 1px solid #999;
+  box-shadow: inset 0 -1px 5px 0 rgba(0, 0, 0, 0.2);
+  box-sizing: border-box;
+  font-smoothing: antialiased;
+}
+
+#appbundle_todotype label {
+  display: none;
 }
 
 #appbundle_todotype {
@@ -110,9 +164,6 @@ button {
   border-top: 1px dotted #adadad;
 }
 
-label[for='toggle-all'] {
-  display: none;
-}
 
 #toggle-all {
   position: absolute;
@@ -121,6 +172,10 @@ label[for='toggle-all'] {
   width: 40px;
   text-align: center;
   border: none; 
+}
+
+#toggle-all label {
+  display: none;
 }
 
 #toggle-all:before {
@@ -251,7 +306,7 @@ label[for='toggle-all'] {
 #form-footer {
   color: #777;
   padding: 0 15px;
-  position: absolute;
+  position: relative;
   right: 0;
   bottom: -31px;
   left: 0;
@@ -297,18 +352,6 @@ label[for='toggle-all'] {
 #clear-completed:hover {
   background: rgba(0, 0, 0, 0.15);
   box-shadow: 0 -1px 0 0 rgba(0, 0, 0, 0.3);
-}
-
-#footer {
-  margin: 65px auto 0;
-  color: #a6a6a6;
-  font-size: 12px;
-  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.7);
-  text-align: center;
-}
-
-#footer a {
-  color: inherit;
 }
 
 .hidden{

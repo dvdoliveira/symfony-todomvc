@@ -15,7 +15,7 @@ class Todo
     /**
      * @var integer
      *
-     * @ORM\Column(name="id", type="integer")
+     * @ORM\Column(name="id", type="integer", nullable=false)
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      */
@@ -24,28 +24,28 @@ class Todo
     /**
      * @var string
      *
-     * @ORM\Column(name="description", type="string", length=255)
+     * @ORM\Column(name="description", type="string", length=255, nullable=true)
      */
     private $description;
 
     /**
      * @var boolean
      *
-     * @ORM\Column(name="completed", type="boolean")
+     * @ORM\Column(name="completed", type="boolean", nullable=true)
      */
     private $completed;
 
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="created", type="datetime")
+     * @ORM\Column(name="created", type="datetime", nullable=true)
      */
     private $created;
 
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="updated", type="datetime")
+     * @ORM\Column(name="updated", type="datetime", nullable=true)
      */
     private $updated;
 
@@ -152,6 +152,11 @@ class Todo
         return $this->updated;
     }
 
+    public function getCsrfIntention($intention)
+    {
+      return sha1(get_class($this).$intention.$this->id);
+    }
+    
     /* Method to convert todos to string */
     public function __toString()
     {
