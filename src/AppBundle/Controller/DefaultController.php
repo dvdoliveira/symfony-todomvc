@@ -68,14 +68,47 @@ class DefaultController extends Controller
         }
     }
 
+    public function deleteAction($id, $token)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $entity = $em->getRepository('AppBundle:Todo')->find($id);
+        if (!$entity) {
+            throw $this->createNotFoundException('Todo was not found.');
+        }
+        $csrf  = $this->container->get('form.csrf_provider');
+
+        if ($csrf->isCsrfTokenValid($entity->getCsrfIntention('delete'), $token)) {
+            $em->remove($entity);
+            $em->flush();
+        } else {
+            throw $this->createNotFoundException('Invalid token.');
+        }
+
+        return $this->redirect($this->generateUrl('todo'));
+    }
+
+    public function clearcompletedAction() 
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $unfinished = $em->getRepository('AppBundle:Todo')->findBy(array('completed' => 1));
+        if ($unfinished) {
+          foreach ($unfinished as $c) {
+            $em->remove($c);
+          }
+          $em->flush();
+        }
+        return $this->redirect($this->generateUrl('todo'));
+    }
+
     public function toggleAction() 
     {
         $em = $this->getDoctrine()->getManager();
         $unfinished = $em->getRepository('AppBundle:Todo')->findBy(array('completed' => 0));
         if ($unfinished) {
-            foreach ($unfinished as $i) {
-                $i->setCompleted(1);
-                $em->persist($i);
+            foreach ($unfinished as $c) {
+                $c->setCompleted(1);
+                $em->persist($c);
             }
             $em->flush();
         }

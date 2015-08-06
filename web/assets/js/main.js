@@ -19,10 +19,10 @@
     refreshElementToDelete();
     
     $('.btnedit').click(function() {
-      var todo;
+      var item;
       var todoid;
       var url;
-      todo = this;
+      item = this;
       todoid = $(this).data("todoid");
       url = Routing.generate("todo_update", {
         id: todoid
@@ -34,10 +34,10 @@
         success: function(data) {
           if (data.completed === 0) {
             $('.toggle').checked = null;
-            $(todo).parents("li").removeClass("completed");
+            $(item).parents("li").removeClass("completed");
           } else {
             $('.toggle').checked = "yes";
-            $(todo).parents("li").addClass("completed");
+            $(item).parents("li").addClass("completed");
           }
           refreshElementRemaining();
           return refreshElementToDelete();

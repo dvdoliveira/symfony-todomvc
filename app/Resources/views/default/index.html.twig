@@ -28,26 +28,26 @@
                     <label for="toggle-all">Mark all as complete</label>
                     <ul id="todo-list">
                         {% for entity in entities %}
-                            <li data-todoid="lili" {% if entity.completed %}class="completed" {% endif %} data-id="{{ entity.id }}">
+                            <li data-todoid="lili" {% if entity.completed %} class="completed" {% endif %} data-id="{{ entity.id }}">
                                 <div class="view" data-todoid="divdiv">
                                     <a class="btnedit" href="#" data-todoid="{{ entity.id }}">
                                         <input class="toggle" type="checkbox" {% if entity.completed %} checked {% endif %} >
                                     </a>
                                     <div class="todolist-label">
                                         <label>{{ entity }}</label>
-                                        <form action="" method="post">
+                                        <form action="{{ path('todo_delete', { 'id': entity.id , 'token': csrf_token(entity.csrfIntention('delete'))}) }}"  method="post">
                                             <button class="destroy"></button>
                                         </form>
                                     </div>
                                 </div>
-                              <input class="edit" value="{{ entity }}">
+                              <input class="edit" value="{{ entity.description }}">
                             </li>
                         {% endfor %}
                     </ul>
                 </section>
                 <footer id="form-footer">
-                    <span id="count-todos"> item left</span>
-                    <a id="clear-completed" href="">Clear completed</a>
+                    <span id="count-todos"><strong id="elementsRemaining">{{ entities | length }}</strong> item(s) left</span>
+                    <a id="clear-completed" href="{{ path('todo_clearcompleted') }}">Clear completed</a>
                 </footer>
             {% endblock %}
         </div>
