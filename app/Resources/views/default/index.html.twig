@@ -22,10 +22,6 @@
                     </header>            
                 </section>
                 <section id="main">
-                    <form id="formtoggle" action="{{ path('todo_toggle') }}">
-                        <input id="toggle-all" type="checkbox">
-                    </form>
-                    <label for="toggle-all">Mark all as complete</label>
                     <ul id="todo-list">
                         {% for entity in entities %}
                             <li data-todoid="lili" {% if entity.completed %} class="completed" {% endif %} data-id="{{ entity.id }}">
@@ -48,6 +44,7 @@
                 <footer id="form-footer">
                     <span id="count-todos"><strong id="elementsRemaining">{{ entities | length }}</strong> item(s) left</span>
                     <a id="clear-completed" href="{{ path('todo_clearcompleted') }}">Clear completed</a>
+                    <a id="toggle-all" href="{{ path('todo_toggle') }}">Mark all as complete</a>
                 </footer>
             {% endblock %}
         </div>
