@@ -4,10 +4,14 @@ app:
     # type:     annotation
 
 todo:
-    path:  /
+    path:     /
     defaults: { _controller: "AppBundle:Default:index" }
 
 todo_create:
-    path:  /create
+    path:     /create
     defaults: { _controller: "AppBundle:Default:create" }
-    methods: { _method: post }
+    methods:  { _method: post }
+
+todo_toggle:
+    path:     /toggle
+    defaults: { _controller: "AppBundle:Default:toggle" }

@@ -22,25 +22,27 @@
                     </header>            
                 </section>
                 <section id="main">
-                    <form id="formtoggle" action="">
+                    <form id="formtoggle" action="{{ path('todo_toggle') }}">
                         <input id="toggle-all" type="checkbox">
                     </form>
                     <label for="toggle-all">Mark all as complete</label>
                     <ul id="todo-list">
-                        <li>
-                            <div class="view">
-                                <a class="btnedit" href="#">
-                                    <input class="toggle" type="checkbox" >
-                                </a>
-                                <div class="todolist-label">
-                                    <label>Todo</label>
-                                    <form action="" method="post">
-                                        <button class="destroy"></button>
-                                    </form>
+                        {% for entity in entities %}
+                            <li data-todoid="lili" {% if entity.completed %}class="completed" {% endif %} data-id="{{ entity.id }}">
+                                <div class="view" data-todoid="divdiv">
+                                    <a class="btnedit" href="#" data-todoid="{{ entity.id }}">
+                                        <input class="toggle" type="checkbox" {% if entity.completed %} checked {% endif %} >
+                                    </a>
+                                    <div class="todolist-label">
+                                        <label>{{ entity }}</label>
+                                        <form action="" method="post">
+                                            <button class="destroy"></button>
+                                        </form>
+                                    </div>
                                 </div>
-                            </div>
-                          <input class="edit" value="">
-                        </li>
+                              <input class="edit" value="{{ entity }}">
+                            </li>
+                        {% endfor %}
                     </ul>
                 </section>
                 <footer id="form-footer">

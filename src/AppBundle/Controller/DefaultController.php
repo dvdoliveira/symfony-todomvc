@@ -41,4 +41,17 @@ class DefaultController extends Controller
             'form'   => $form->createView(),
       ));
     }
+
+    public function toggleAction() {
+    $em = $this->getDoctrine()->getManager();
+    $unfinished = $em->getRepository('AppBundle:Todo')->findBy(array('completed' => 0));
+    if ($unfinished) {
+      foreach ($unfinished as $i) {
+        $i->setCompleted(1);
+        $em->persist($i);
+      }
+      $em->flush();
+    }
+    return $this->redirect($this->generateUrl('todo'));
+  }
 }

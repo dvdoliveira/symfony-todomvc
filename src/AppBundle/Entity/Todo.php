@@ -152,6 +152,12 @@ class Todo
         return $this->updated;
     }
 
+    /* Method to convert todos to string */
+    public function __toString()
+    {
+        return $this->getDescription();
+    }
+
     /**
      * Constructor
      */
