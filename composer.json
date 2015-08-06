@@ -23,7 +23,9 @@
         "twbs/bootstrap": "^3.3",
         "leafo/scssphp": "^0.1.9",
         "patchwork/jsqueeze": "~1.0",
-        "friendsofsymfony/jsrouting-bundle": "^1.5"
+        "friendsofsymfony/jsrouting-bundle": "^1.5",
+        "ext-pdo": "*",
+        "ext-pdo_pgsql": "*"
     },
     "require-dev": {
         "sensio/generator-bundle": "~2.3"
