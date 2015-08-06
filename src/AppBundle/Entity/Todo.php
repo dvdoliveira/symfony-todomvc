@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Todo
  *
- * @ORM\Table()
+ * @ORM\Table(name="todomvc")
  * @ORM\Entity
  */
 class Todo
@@ -150,5 +150,14 @@ class Todo
     public function getUpdated()
     {
         return $this->updated;
+    }
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->setCreated(new \DateTime());
+        $this->setUpdated(new \DateTime());
     }
 }
