@@ -1,7 +1,7 @@
 Symfony TodoMVC
 ===============
 
-This project is a simple implementation of TodoMVC using Symfony.
+This code repository is a simple implementation of [TodoMVC] [4] project using Symfony (PHP Framework).
 
 This document contains information on how to download, install, and start using
 
@@ -39,7 +39,8 @@ http://localhost:8000
 
 Enjoy! 
 
-[1]:  http://symfony.com/doc/current/book/installation.html
+[1]: http://symfony.com/doc/current/book/installation.html
 [2]: http://www.postgresql.org/download/
 [3]: https://getcomposer.org/download/
+[4]: http://todomvc.com/
 
